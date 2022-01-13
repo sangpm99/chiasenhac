@@ -316,7 +316,7 @@
                                     <?php
                                         include('define.php');
                                         include("config.php");
-                                        $sql = "SELECT * FROM song WHERE id_catagory like 1 ORDER BY id DESC LIMIT 5";
+                                        $sql = "SELECT * FROM song WHERE id_category like 1 ORDER BY id DESC LIMIT 5";
                                         $result = mysqli_query($conn,$sql);
                                         
                                         if(mysqli_num_rows($result) > 0){
@@ -369,7 +369,7 @@
                                     <?php
                                         
                                         include("config.php");
-                                        $sql2 = "SELECT * FROM song WHERE id_catagory like 1 EXCEPT (SELECT * FROM song ORDER BY id DESC LIMIT 5) ORDER BY id DESC LIMIT 5";
+                                        $sql2 = "SELECT * FROM song WHERE id_category like 1 EXCEPT (SELECT * FROM song ORDER BY id DESC LIMIT 5) ORDER BY id DESC LIMIT 5";
                                         $result2 = mysqli_query($conn,$sql2);
                                         if(mysqli_num_rows($result2) > 0){
                                             while($row = mysqli_fetch_assoc($result2)){

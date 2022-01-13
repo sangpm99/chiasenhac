@@ -199,6 +199,9 @@ html{
 }
 
 /* CSS for slider */
+.featured-song{
+    min-height: 400px;
+}
 .slider{
     background-color: var(--bg);
 }
