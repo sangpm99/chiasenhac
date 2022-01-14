@@ -102,6 +102,11 @@ html{
 .border-left{
     border-left: 5px solid var(--red);
 }
+.divider{
+    height: 1px;
+    margin-left: 0.7rem;
+    background-color: var(--subtext);
+}
 /* CSS for header */
 .header-main{
     background-color: var(--header);
@@ -269,11 +274,11 @@ html{
 .nav-tabs .nav-link:hover{
     border-color: #fff #fff var(--red);
 }
-.my-sing-rank-1 p, .my-sing-rank p{
+.my-sing-rank-1 p, .my-sing-rank p, .my-sing p{
     margin: 0;
     font-size: 0.9rem;
 }
-.my-sing-rank-1 .col-4, .my-sing-rank .col-1{
+.my-sing-rank-1 .col-4, .my-sing-rank .col-1, .my-sing .col-1{
     position: relative;
 }
 .my-sing-rank-1 .rank-first{
@@ -300,11 +305,11 @@ html{
     position: absolute;
     left: 1.5rem;
 }
-.my-sing-rank-1 img, .my-sing-rank img{
+.my-sing-rank-1 img, .my-sing-rank img , .my-sing img{
     width: 100%;
     box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
-.my-sing-rank-1 .col-6, .my-sing-rank .col-1{
+.my-sing-rank-1 .col-6, .my-sing-rank .col-1, .my-sing .col-1{
     display: flex;
     align-items: center;
 }
