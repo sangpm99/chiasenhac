@@ -385,8 +385,6 @@
                                                 <div class="box-content">
                                                     <a class="txt txt-bold my-link" href="#"><?php echo $i; $i++; ?>. <?php echo $row['song_name']; ?></a>
                                                     <a class="sub-txt my-link" href="#">
-                                                    
-
                                                         <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
                                                         <?php
                                                             mysqli_close($conn);
@@ -446,79 +444,46 @@
                         </div>
                     </div>
                     <div class="row">
+                        <?php        
+                            include("config.php");
+                            $sql3 = "SELECT * FROM song WHERE id_category LIKE 2 ORDER BY id DESC LIMIT 10";
+                            $result3 = mysqli_query($conn,$sql3);
+                            if(mysqli_num_rows($result3) > 0){
+                                while($row = mysqli_fetch_assoc($result3)){
+                        ?>
                         <div class="col-2 col-20">
                             <div class="box pb-5">
                                 <div class="box-img">
-                                    <img src="./assets/images/haiduongmenhdanhlaphithuong.jpg" alt="">
+                                    <img src="<?php echo $row['song_image']; ?>" alt="">
                                 </div>
                                 <div class="box-content">
-                                    <a class="txt txt-bold my-link" href="#">Hải Vương Mệnh Danh Là Phi Thường (海王注定不平凡) (Single)</a>
-                                    <a class="sub-txt my-link" href="#">Lý Ha Ha (李哈哈)</a>
+                                    <a class="txt txt-bold my-link" href="#"><?php echo $row['song_name']; ?></a>
+                                    <a class="sub-txt my-link" href="#">
+                                        <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                        <?php
+                                            mysqli_close($conn);
+                                            include("config.php");
+                                            $id_singer = $row['id_singer'];
+                                            $sql4 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                            $name_singer = $sql4;
+                                            $result4 = mysqli_query($conn,$sql4);
+                                            if(mysqli_num_rows($result4) > 0){
+                                                while($row = mysqli_fetch_assoc($result4)){
+                                                    echo $row['full_name'];
+                                                }
+                                            }
+                                        ?>
+                                        <!--  -->
+                                    </a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-2 col-20">
-                            <div class="box pb-5">
-                                <div class="box-img">
-                                    <img src="./assets/images/haiduongmenhdanhlaphithuong.jpg" alt="">
-                                </div>
-                                <div class="box-content">
-                                    <a class="txt txt-bold my-link" href="#">Hải Vương Mệnh Danh Là Phi Thường (海王注定不平凡) (Single)</a>
-                                    <a class="sub-txt my-link" href="#">Lý Ha Ha (李哈哈)</a>
-                                </div>
-                            </div>
+                        <?php
+                                }
+                            }
+                            mysqli_close($conn);
+                        ?>
                         </div>
-
-                        <div class="col-2 col-20">
-                            <div class="box pb-5">
-                                <div class="box-img">
-                                    <img src="./assets/images/haiduongmenhdanhlaphithuong.jpg" alt="">
-                                </div>
-                                <div class="box-content">
-                                    <a class="txt txt-bold my-link" href="#">Hải Vương Mệnh Danh Là Phi Thường (海王注定不平凡) (Single)</a>
-                                    <a class="sub-txt my-link" href="#">Lý Ha Ha (李哈哈)</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-2 col-20">
-                            <div class="box pb-5">
-                                <div class="box-img">
-                                    <img src="./assets/images/haiduongmenhdanhlaphithuong.jpg" alt="">
-                                </div>
-                                <div class="box-content">
-                                    <a class="txt txt-bold my-link" href="#">Hải Vương Mệnh Danh Là Phi Thường (海王注定不平凡) (Single)</a>
-                                    <a class="sub-txt my-link" href="#">Lý Ha Ha (李哈哈)</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-2 col-20">
-                            <div class="box pb-5">
-                                <div class="box-img">
-                                    <img src="./assets/images/haiduongmenhdanhlaphithuong.jpg" alt="">
-                                </div>
-                                <div class="box-content">
-                                    <a class="txt txt-bold my-link" href="#">Hải Vương Mệnh Danh Là Phi Thường (海王注定不平凡) (Single)</a>
-                                    <a class="sub-txt my-link" href="#">Lý Ha Ha (李哈哈)</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-2 col-20">
-                            <div class="box pb-5">
-                                <div class="box-img">
-                                    <img src="./assets/images/haiduongmenhdanhlaphithuong.jpg" alt="">
-                                </div>
-                                <div class="box-content">
-                                    <a class="txt txt-bold my-link" href="#">Hải Vương Mệnh Danh Là Phi Thường (海王注定不平凡) (Single)</a>
-                                    <a class="sub-txt my-link" href="#">Lý Ha Ha (李哈哈)</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                    </div>
 
                     <!-- Slider -->
                     <div class="row">
@@ -542,33 +507,39 @@
                                         </div>
                                     </div>
 
-                                    <!-- <div class="carousel-item">
+                                    <div class="carousel-item">
                                         <div class="row">
-                                            <div class="col-4">
-                                                <img src="./assets/images/bxhvn.png" class="d-block w-100" alt="...">
+                                            <div class="col-4 mid">
+                                                <img src="./assets/images/bxhnhachoa.png" class="d-block w-100" alt="...">
+                                                <p class = "all-rank">BXH NHẠC HOA</p>
                                             </div>
-                                            <div class="col-4">
-                                                <img src="./assets/images/bxhvietvideo.png" class="d-block w-100" alt="...">
+                                            <div class="col-4 mid">
+                                                <img src="./assets/images/bxhnhachan.png" class="d-block w-100" alt="...">
+                                                <p class = "all-rank">BXH NHẠC HÀN</p>
                                             </div>
-                                            <div class="col-4">
-                                                <img src="./assets/images/bxhusuk.png" class="d-block w-100" alt="...">
+                                            <div class="col-4 mid">
+                                                <img src="./assets/images/bxhnhacnhat.png" class="d-block w-100" alt="...">
+                                                <p class ="all-rank">BXH NHẠC NHẬT</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="carousel-item">
                                         <div class="row">
-                                            <div class="col-4">
+                                            <div class="col-4 mid">
+                                                <img src="./assets/images/bxhnuockhac.png" class="d-block w-100" alt="...">
+                                                <p class = "all-rank">BXH NHẠC NHÂT</p>
+                                            </div>
+                                            <div class="col-4 mid">
+                                                <img src="./assets/images/bxhbeatplayback.png" class="d-block w-100" alt="...">
+                                                <p class = "all-rank">BXH BEAT PLAYBACK</p>
+                                            </div>
+                                            <div class="col-4 mid">
                                                 <img src="./assets/images/bxhvn.png" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="./assets/images/bxhvietvideo.png" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="col-4">
-                                                <img src="./assets/images/bxhusuk.png" class="d-block w-100" alt="...">
+                                                <p class ="all-rank">BXH VIỆT NAM</p>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     
                                 </div>
 
@@ -584,8 +555,153 @@
                             </div>
                         </div>
                     </div>
+
+                    
+                    <div class="row">
+                        <!-- Begin Bài Hát Mới Chia Sẻ -->
+                        <div class="col-6">
+                            <div class="row py-5">
+                                <div class="col-8">
+                                    <h3 class="title">Bài hát mới chia sẻ</h3>
+                                </div>
+                                <div class="col-4">
+                                    <a class="float-end my-sub-link" href="#">Xem tất cả</a>
+                                </div>
+
+                                
+                                <?php
+                                    include("config.php");
+                                    $sql5 = "SELECT * FROM song WHERE id_category like 3 ORDER BY id DESC LIMIT 10";
+                                    $result5 = mysqli_query($conn,$sql5);
+                                    
+                                    if(mysqli_num_rows($result5) > 0){
+                                        while($row = mysqli_fetch_assoc($result5)){
+                                ?>
+
+                                            <div class="col-12 py-3">
+                                                <div class="row my-sing">
+                                                    <div class="col-4">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block">
+                                                                <a class="sub-txt my-link" href="#">
+                                                                    <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                    <?php
+                                                                        mysqli_close($conn);
+                                                                        include("config.php");
+                                                                        $id_singer = $row['id_singer'];
+                                                                        $song_date = $row['song_date'];
+                                                                        $song_view = $row['song_view'];
+                                                                        $sql6 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                        $name_singer = $sql6;
+                                                                        $result6 = mysqli_query($conn,$sql6);
+                                                                        if(mysqli_num_rows($result6) > 0){
+                                                                            while($row = mysqli_fetch_assoc($result6)){
+                                                                                echo $row['full_name'];
+                                                                            }
+                                                                        }
+                                                                        
+                                                                    ?>
+                                                                    <!--  -->
+                                                                </a>
+                                                            </p>
+                                                            <p class="txt-red">Lossless</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p class="txt"><i class="far fa-clock mx-1 my-1"></i><?php echo $song_date; ?></p>
+                                                        <p class="txt"><i class="fas fa-headset mx-1 my-1"></i><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="divider"></div>
+
+                                <?php
+                                        }
+                                    }
+                                    mysqli_close($conn);
+                                ?>
+                            </div>
+                        </div>
+                        <!-- End Bài Hát Mới Chia Sẻ -->
+
+                        <!-- Begin Download mới nhất -->
+                        <div class="col-6">
+                        <div class="row py-5">
+                                <div class="col-8">
+                                    <h3 class="title">Download mới nhất</h3>
+                                </div>
+                                <div class="col-4">
+                                    <a class="float-end my-sub-link" href="#">Xem tất cả</a>
+                                </div>
+
+                                
+                                <?php
+                                    include("config.php");
+                                    $sql7 = "SELECT * FROM song WHERE id_category like 4 ORDER BY id DESC LIMIT 10";
+                                    $result7 = mysqli_query($conn,$sql7);
+                                    
+                                    if(mysqli_num_rows($result7) > 0){
+                                        while($row = mysqli_fetch_assoc($result7)){
+                                ?>
+
+                                            <div class="col-12 py-3">
+                                                <div class="row my-sing">
+                                                    <div class="col-4">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block">
+                                                                <a class="sub-txt my-link" href="#">
+                                                                    <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                    <?php
+                                                                        mysqli_close($conn);
+                                                                        include("config.php");
+                                                                        $id_singer = $row['id_singer'];
+                                                                        $song_date = $row['song_date'];
+                                                                        $song_view = $row['song_view'];
+                                                                        $sql8 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                        $name_singer = $sql8;
+                                                                        $result8 = mysqli_query($conn,$sql8);
+                                                                        if(mysqli_num_rows($result8) > 0){
+                                                                            while($row = mysqli_fetch_assoc($result8)){
+                                                                                echo $row['full_name'];
+                                                                            }
+                                                                        }
+                                                                        
+                                                                    ?>
+                                                                    <!--  -->
+                                                                </a>
+                                                            </p>
+                                                            <p class="txt-red">Lossless</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <p class="txt"><i class="far fa-clock mx-1 my-1"></i><?php echo $song_date; ?></p>
+                                                        <p class="txt"><i class="fas fa-headset mx-1 my-1"></i><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="divider"></div>
+
+                                <?php
+                                        }
+                                    }
+                                    mysqli_close($conn);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Download mới nhất -->
                     <!-- End -->
                 </div>
+
+
                 <div class="col-4">
                     <!-- Begin -->
                     <div class="slidebar">
