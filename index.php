@@ -778,10 +778,10 @@
                     <div class="row">
                         <?php        
                             include("config.php");
-                            $sql3 = "SELECT * FROM song WHERE id_category LIKE 2 ORDER BY id DESC LIMIT 10";
-                            $result3 = mysqli_query($conn,$sql3);
-                            if(mysqli_num_rows($result3) > 0){
-                                while($row = mysqli_fetch_assoc($result3)){
+                            $sql9 = "SELECT * FROM song WHERE id_category LIKE 5 ORDER BY id DESC LIMIT 10";
+                            $result9 = mysqli_query($conn,$sql9);
+                            if(mysqli_num_rows($result9) > 0){
+                                while($row = mysqli_fetch_assoc($result9)){
                         ?>
                         <div class="col-2 col-20">
                             <div class="box pb-5">
@@ -796,11 +796,11 @@
                                             mysqli_close($conn);
                                             include("config.php");
                                             $id_singer = $row['id_singer'];
-                                            $sql4 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
-                                            $name_singer = $sql4;
-                                            $result4 = mysqli_query($conn,$sql4);
-                                            if(mysqli_num_rows($result4) > 0){
-                                                while($row = mysqli_fetch_assoc($result4)){
+                                            $sql10 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                            $name_singer = $sql10;
+                                            $result10 = mysqli_query($conn,$sql10);
+                                            if(mysqli_num_rows($result10) > 0){
+                                                while($row = mysqli_fetch_assoc($result10)){
                                                     echo $row['full_name'];
                                                 }
                                             }
