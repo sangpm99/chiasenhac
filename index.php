@@ -698,6 +698,126 @@
                         </div>
                     </div>
                     <!-- End Download mới nhất -->
+
+                    <!-- Begin slider2 -->
+                    <div class="row">
+                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" data-bs-interval="10000">
+                                    <div class="row">
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/romance.png" class="d-block w-100" alt="...">
+                                            <p class = "all-rank">Romance</p>
+                                        </div>
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/sleep.png" class="d-block w-100" alt="...">
+                                            <p class = "all-rank">Sleep</p>
+                                        </div>
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/gym.png" class="d-block w-100" alt="...">
+                                            <p class ="all-rank">Gym</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item" data-bs-interval="2000">
+                                    <div class="row">
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/dance.png" class="d-block w-100" alt="...">
+                                            <p class = "all-rank">Dance</p>
+                                        </div>
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/work.png" class="d-block w-100" alt="...">
+                                            <p class = "all-rank">Work</p>
+                                        </div>
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/coffee.png" class="d-block w-100" alt="...">
+                                            <p class ="all-rank">Coffee</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/game.png" class="d-block w-100" alt="...">
+                                            <p class = "all-rank">Game</p>
+                                        </div>
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/travel.png" class="d-block w-100" alt="...">
+                                            <p class = "all-rank">Travel</p>
+                                        </div>
+                                        <div class="col-4 mid">
+                                            <img src="./assets/images/newyear.png" class="d-block w-100" alt="...">
+                                            <p class ="all-rank">New Year</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- End Slider-2 -->
+
+                    <!-- Begin Album -->
+                    <div class="row mt-5 mb-2">
+                        <div class="col-10">
+                            <h3 class="title">Album mới</h3>
+                        </div>
+                        <div class="col-2">
+                            <a class="float-end my-sub-link" href="#">Xem tất cả</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <?php        
+                            include("config.php");
+                            $sql3 = "SELECT * FROM song WHERE id_category LIKE 2 ORDER BY id DESC LIMIT 10";
+                            $result3 = mysqli_query($conn,$sql3);
+                            if(mysqli_num_rows($result3) > 0){
+                                while($row = mysqli_fetch_assoc($result3)){
+                        ?>
+                        <div class="col-2 col-20">
+                            <div class="box pb-5">
+                                <div class="box-img">
+                                    <img src="<?php echo $row['song_image']; ?>" alt="">
+                                </div>
+                                <div class="box-content">
+                                    <a class="txt txt-bold my-link" href="#"><?php echo $row['song_name']; ?></a>
+                                    <a class="sub-txt my-link" href="#">
+                                        <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                        <?php
+                                            mysqli_close($conn);
+                                            include("config.php");
+                                            $id_singer = $row['id_singer'];
+                                            $sql4 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                            $name_singer = $sql4;
+                                            $result4 = mysqli_query($conn,$sql4);
+                                            if(mysqli_num_rows($result4) > 0){
+                                                while($row = mysqli_fetch_assoc($result4)){
+                                                    echo $row['full_name'];
+                                                }
+                                            }
+                                        ?>
+                                        <!--  -->
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                                }
+                            }
+                            mysqli_close($conn);
+                        ?>
+                        </div>
+
+                    <!-- End Album -->
                     <!-- End -->
                 </div>
 
