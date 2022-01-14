@@ -851,95 +851,841 @@
                                 </ul>
                                 <div class="tab-content" id="myTabContent">
                                     <div class="tab-pane fade show active" id="vietnam" role="tabpanel" aria-labelledby="vietnam-tab">
+
+
+                                        <!-- Tab Viet Nam -->
                                         <div class="row bd-bottom">
                                             <div class="col-12 py-3">
+                                            <?php        
+                                                include("config.php");
+                                                $sql11 = "SELECT * FROM song WHERE id_category LIKE 7 ORDER BY song_view DESC LIMIT 1";
+                                                $result11 = mysqli_query($conn,$sql11);
+                                                if(mysqli_num_rows($result11) > 0){
+                                                    while($row = mysqli_fetch_assoc($result11)){
+                                            ?>
                                                 <div class="row my-sing-rank-1">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="./assets/images/devuong.jpg" alt=""></a>
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                         <p class="rank-first">1</p>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
-                                                            <p class="txt-bold dp-block"><a class="my-link" href="#">Đế Vương</a></p>
-                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">Đình Dũng</a>; <a class="sub-txt my-link" href="#">ACV</a></p>
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql12 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql12;
+                                                                    $result12 = mysqli_query($conn,$sql12);
+                                                                    if(mysqli_num_rows($result12) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result12)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
-                                                        <p>58,257</p>
+                                                        <p><?php echo $song_view; ?></p>
                                                     </div>
                                                 </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
                                             </div>
                                         </div>
-
+                                        
                                         <div class="row bd-bottom">
                                             <div class="col-12 py-3">
+
+                                            <?php
+                                                include("config.php");
+                                                $sql13 = "SELECT * FROM song WHERE id_category LIKE 7 EXCEPT (SELECT * FROM song WHERE id_category like 7 ORDER BY song_view DESC LIMIT 1) ORDER BY song_view DESC LIMIT 1";
+                                                $result13 = mysqli_query($conn,$sql13);
+                                                if(mysqli_num_rows($result13) > 0){
+                                                    while($row = mysqli_fetch_assoc($result13)){
+                                            ?>
                                                 <div class="row my-sing-rank">
                                                     <div class="col-1">
                                                         <p class="rank-second">2</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="./assets/images/aichungtinhduocmai.jpg" alt=""></a>
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
-                                                            <p class="txt-bold dp-block"><a class="my-link" href="#">Ai Chung Tình Được Mãi</a></p>
-                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">Đình Tùng Huy</a></p>
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql14 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql14;
+                                                                    $result14 = mysqli_query($conn,$sql14);
+                                                                    if(mysqli_num_rows($result14) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result14)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
-                                                        <p>57,275</p>
+                                                        <p><?php echo $song_view; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
                                         </div>
 
                                         <div class="row bd-bottom">
                                             <div class="col-12 py-3">
+                                            <?php
+                                                include("config.php");
+                                                $sql15 = "SELECT * FROM song WHERE id_category LIKE 7 EXCEPT (SELECT * FROM song WHERE id_category like 7 ORDER BY song_view DESC LIMIT 2) ORDER BY song_view DESC LIMIT 1";
+                                                $result15 = mysqli_query($conn,$sql15);
+                                                if(mysqli_num_rows($result15) > 0){
+                                                    while($row = mysqli_fetch_assoc($result15)){
+                                            ?>
                                                 <div class="row my-sing-rank">
                                                     <div class="col-1">
                                                         <p class="rank-third">3</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="./assets/images/buocquanhau.jpg" alt=""></a>
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
-                                                            <p class="txt-bold dp-block"><a class="my-link" href="#">Bước Qua Nhau</a></p>
-                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">Vũ</a></p>
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql16 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql16;
+                                                                    $result16 = mysqli_query($conn,$sql16);
+                                                                    if(mysqli_num_rows($result16) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result16)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
-                                                        <p>56,275</p>
+                                                        <p><?php echo $song_view; ?></p>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+                                        
+
+                                        <?php
+                                            $i = 4;
+                                            include("config.php");
+                                            $sql17 = "SELECT * FROM song WHERE id_category LIKE 7 EXCEPT (SELECT * FROM song WHERE id_category like 7 ORDER BY song_view DESC LIMIT 3) ORDER BY song_view DESC LIMIT 7";
+                                            $result17 = mysqli_query($conn,$sql17);
+                                            if(mysqli_num_rows($result17) > 0){
+                                                while($row = mysqli_fetch_assoc($result17)){
+                                        ?>
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-th"><?php echo $i; $i++ ?></p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql18 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql18;
+                                                                    $result18 = mysqli_query($conn,$sql18);
+                                                                    if(mysqli_num_rows($result18) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result18)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                                }
+                                            }
+                                            mysqli_close($conn);
+                                        ?>
+
+                                    </div>
+                                    
+
+                                    <!-- Tab US UK -->
+                                    <div class="tab-pane fade" id="us-uk" role="tabpanel" aria-labelledby="us-uk-tab">
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                            <?php        
+                                                include("config.php");
+                                                $sql19 = "SELECT * FROM song WHERE id_category LIKE 8 ORDER BY song_view DESC LIMIT 1";
+                                                $result19 = mysqli_query($conn,$sql19);
+                                                if(mysqli_num_rows($result11) > 0){
+                                                    while($row = mysqli_fetch_assoc($result19)){
+                                            ?>
+                                                <div class="row my-sing-rank-1">
+                                                    <div class="col-4">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <p class="rank-first">1</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql20 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql20;
+                                                                    $result20 = mysqli_query($conn,$sql20);
+                                                                    if(mysqli_num_rows($result20) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result20)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
                                             </div>
                                         </div>
 
                                         <div class="row bd-bottom">
                                             <div class="col-12 py-3">
+
+                                            <?php
+                                                include("config.php");
+                                                $sql21 = "SELECT * FROM song WHERE id_category LIKE 8 EXCEPT (SELECT * FROM song WHERE id_category like 8 ORDER BY song_view DESC LIMIT 1) ORDER BY song_view DESC LIMIT 1";
+                                                $result21 = mysqli_query($conn,$sql21);
+                                                if(mysqli_num_rows($result21) > 0){
+                                                    while($row = mysqli_fetch_assoc($result21)){
+                                            ?>
                                                 <div class="row my-sing-rank">
                                                     <div class="col-1">
-                                                        <p class="rank-th">4</p>
+                                                        <p class="rank-second">2</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="./assets/images/minhyeudendaythoi.jpg" alt=""></a>
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
-                                                            <p class="txt-bold dp-block"><a class="my-link" href="#">Mình Yêu Đến Đây Thôi</a></p>
-                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">Tóc Tiên</a></p>
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql22 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql22;
+                                                                    $result22 = mysqli_query($conn,$sql22);
+                                                                    if(mysqli_num_rows($result22) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result22)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
                                                         </div>
                                                     </div>
                                                     <div class="col-2">
-                                                        <p>55,275</p>
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                            <?php
+                                                include("config.php");
+                                                $sql23 = "SELECT * FROM song WHERE id_category LIKE 8 EXCEPT (SELECT * FROM song WHERE id_category like 8 ORDER BY song_view DESC LIMIT 2) ORDER BY song_view DESC LIMIT 1";
+                                                $result23 = mysqli_query($conn,$sql23);
+                                                if(mysqli_num_rows($result23) > 0){
+                                                    while($row = mysqli_fetch_assoc($result23)){
+                                            ?>
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-third">3</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql24 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql24;
+                                                                    $result24 = mysqli_query($conn,$sql24);
+                                                                    if(mysqli_num_rows($result24) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result24)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+                                        
+
+                                        <?php
+                                            $i = 4;
+                                            include("config.php");
+                                            $sql25 = "SELECT * FROM song WHERE id_category LIKE 8 EXCEPT (SELECT * FROM song WHERE id_category like 8 ORDER BY song_view DESC LIMIT 3) ORDER BY song_view DESC LIMIT 7";
+                                            $result25 = mysqli_query($conn,$sql25);
+                                            if(mysqli_num_rows($result25) > 0){
+                                                while($row = mysqli_fetch_assoc($result25)){
+                                        ?>
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-th"><?php echo $i; $i++ ?></p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql26 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql26;
+                                                                    $result26 = mysqli_query($conn,$sql26);
+                                                                    if(mysqli_num_rows($result26) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result26)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php
+                                                }
+                                            }
+                                            mysqli_close($conn);
+                                        ?>
                                     </div>
-                                    <div class="tab-pane fade" id="us-uk" role="tabpanel" aria-labelledby="us-uk-tab">Tab US-UK</div>
-                                    <div class="tab-pane fade" id="k-pop" role="tabpanel" aria-labelledby="k-pop-tab">Tab K-POP</div>
-                                    <div class="tab-pane fade" id="j-pop" role="tabpanel" aria-labelledby="j-pop-tab">Tab J-POP</div>
+
+                                    <!-- Tab Kpop -->
+                                    <div class="tab-pane fade" id="k-pop" role="tabpanel" aria-labelledby="k-pop-tab">
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                            <?php        
+                                                include("config.php");
+                                                $sql27 = "SELECT * FROM song WHERE id_category LIKE 9 ORDER BY song_view DESC LIMIT 1";
+                                                $result27 = mysqli_query($conn,$sql27);
+                                                if(mysqli_num_rows($result27) > 0){
+                                                    while($row = mysqli_fetch_assoc($result27)){
+                                            ?>
+                                                <div class="row my-sing-rank-1">
+                                                    <div class="col-4">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <p class="rank-first">1</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql28 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql28;
+                                                                    $result28 = mysqli_query($conn,$sql28);
+                                                                    if(mysqli_num_rows($result28) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result28)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+
+                                            <?php
+                                                include("config.php");
+                                                $sql29 = "SELECT * FROM song WHERE id_category LIKE 9 EXCEPT (SELECT * FROM song WHERE id_category like 9 ORDER BY song_view DESC LIMIT 1) ORDER BY song_view DESC LIMIT 1";
+                                                $result29 = mysqli_query($conn,$sql29);
+                                                if(mysqli_num_rows($result29) > 0){
+                                                    while($row = mysqli_fetch_assoc($result29)){
+                                            ?>
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-second">2</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql30 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql30;
+                                                                    $result30 = mysqli_query($conn,$sql30);
+                                                                    if(mysqli_num_rows($result30) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result30)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                            <?php
+                                                include("config.php");
+                                                $sql31 = "SELECT * FROM song WHERE id_category LIKE 9 EXCEPT (SELECT * FROM song WHERE id_category like 9 ORDER BY song_view DESC LIMIT 2) ORDER BY song_view DESC LIMIT 1";
+                                                $result31 = mysqli_query($conn,$sql31);
+                                                if(mysqli_num_rows($result31) > 0){
+                                                    while($row = mysqli_fetch_assoc($result31)){
+                                            ?>
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-third">3</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql32 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql32;
+                                                                    $result32 = mysqli_query($conn,$sql32);
+                                                                    if(mysqli_num_rows($result32) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result32)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+                                        
+
+                                        <?php
+                                            $i = 4;
+                                            include("config.php");
+                                            $sql33 = "SELECT * FROM song WHERE id_category LIKE 9 EXCEPT (SELECT * FROM song WHERE id_category like 9 ORDER BY song_view DESC LIMIT 3) ORDER BY song_view DESC LIMIT 7";
+                                            $result33 = mysqli_query($conn,$sql33);
+                                            if(mysqli_num_rows($result33) > 0){
+                                                while($row = mysqli_fetch_assoc($result33)){
+                                        ?>
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-th"><?php echo $i; $i++ ?></p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql34 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql34;
+                                                                    $result34 = mysqli_query($conn,$sql34);
+                                                                    if(mysqli_num_rows($result34) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result34)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                                }
+                                            }
+                                            mysqli_close($conn);
+                                        ?>
+                                    </div>
+
+
+                                    <!-- Tab Jpop -->
+                                    <div class="tab-pane fade" id="j-pop" role="tabpanel" aria-labelledby="j-pop-tab">
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                            <?php        
+                                                include("config.php");
+                                                $sql35 = "SELECT * FROM song WHERE id_category LIKE 10 ORDER BY song_view DESC LIMIT 1";
+                                                $result35 = mysqli_query($conn,$sql35);
+                                                if(mysqli_num_rows($result35) > 0){
+                                                    while($row = mysqli_fetch_assoc($result35)){
+                                            ?>
+                                                <div class="row my-sing-rank-1">
+                                                    <div class="col-4">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <p class="rank-first">1</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql36 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql36;
+                                                                    $result36 = mysqli_query($conn,$sql36);
+                                                                    if(mysqli_num_rows($result36) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result36)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                            </div>
+                                        </div>
+
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+
+                                            <?php
+                                                include("config.php");
+                                                $sql37 = "SELECT * FROM song WHERE id_category LIKE 10 EXCEPT (SELECT * FROM song WHERE id_category like 10 ORDER BY song_view DESC LIMIT 1) ORDER BY song_view DESC LIMIT 1";
+                                                $result37 = mysqli_query($conn,$sql37);
+                                                if(mysqli_num_rows($result37) > 0){
+                                                    while($row = mysqli_fetch_assoc($result37)){
+                                            ?>
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-second">2</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql38 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql38;
+                                                                    $result38 = mysqli_query($conn,$sql38);
+                                                                    if(mysqli_num_rows($result38) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result38)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                            <?php
+                                                include("config.php");
+                                                $sql39 = "SELECT * FROM song WHERE id_category LIKE 10 EXCEPT (SELECT * FROM song WHERE id_category like 10 ORDER BY song_view DESC LIMIT 2) ORDER BY song_view DESC LIMIT 1";
+                                                $result39 = mysqli_query($conn,$sql39);
+                                                if(mysqli_num_rows($result39) > 0){
+                                                    while($row = mysqli_fetch_assoc($result39)){
+                                            ?>
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-third">3</p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql40 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql40;
+                                                                    $result40 = mysqli_query($conn,$sql40);
+                                                                    if(mysqli_num_rows($result40) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result40)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                                    }
+                                                }
+                                                mysqli_close($conn);
+                                            ?>
+                                        </div>
+                                        
+
+                                        <?php
+                                            $i = 4;
+                                            include("config.php");
+                                            $sql41 = "SELECT * FROM song WHERE id_category LIKE 10 EXCEPT (SELECT * FROM song WHERE id_category like 10 ORDER BY song_view DESC LIMIT 3) ORDER BY song_view DESC LIMIT 7";
+                                            $result41 = mysqli_query($conn,$sql41);
+                                            if(mysqli_num_rows($result41) > 0){
+                                                while($row = mysqli_fetch_assoc($result41)){
+                                        ?>
+                                        <div class="row bd-bottom">
+                                            <div class="col-12 py-3">
+                                                <div class="row my-sing-rank">
+                                                    <div class="col-1">
+                                                        <p class="rank-th"><?php echo $i; $i++ ?></p>
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="name-sing">
+                                                            <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['song_name']; ?></a></p>
+                                                            <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#">
+                                                                <!-- Lấy tên ca sĩ từ bảng singer thông qua khóa ngoại id_singer của bảng song -->
+                                                                <?php
+                                                                    mysqli_close($conn);
+                                                                    include("config.php");
+                                                                    $id_singer = $row['id_singer'];
+                                                                    $song_view = $row['song_view'];
+                                                                    $sql42 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                                    $name_singer = $sql42;
+                                                                    $result42 = mysqli_query($conn,$sql42);
+                                                                    if(mysqli_num_rows($result42) > 0){
+                                                                        while($row = mysqli_fetch_assoc($result42)){
+                                                                            echo $row['full_name'];
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                <!--  -->
+                                                            </a></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <p><?php echo $song_view; ?></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php
+                                                }
+                                            }
+                                            mysqli_close($conn);
+                                        ?>
+                                    </div>
                                 </div>
                             </div>
                         </div>

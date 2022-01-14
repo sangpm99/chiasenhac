@@ -287,24 +287,24 @@ html{
     font-size: 1.5rem;
     position: absolute;
     bottom: 0.5rem;
-    left: 1.5rem;
+    left: 1rem;
 }
 .my-sing-rank .rank-second{
     color: var(--green);
     font-size: 1.5rem;
     position: absolute;
-    left: 1.5rem;
+    left: 1rem;
 }
 .my-sing-rank .rank-third{
     color: var(--red);
     font-size: 1.5rem;
     position: absolute;
-    left: 1.5rem;
+    left: 1rem;
 }
 .my-sing-rank .rank-th{
     font-size: 1.5rem;
     position: absolute;
-    left: 1.5rem;
+    left: 1rem;
 }
 .my-sing-rank-1 img, .my-sing-rank img , .my-sing img{
     width: 100%;
