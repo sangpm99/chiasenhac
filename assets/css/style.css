@@ -105,6 +105,7 @@ html{
 .divider{
     height: 1px;
     margin-left: 0.7rem;
+    width: 90%;
     background-color: var(--subtext);
 }
 /* CSS for header */
