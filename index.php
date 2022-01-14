@@ -340,7 +340,7 @@
                                                             mysqli_close($conn);
                                                             include("config.php");
                                                             $id_singer = $row['id_singer'];
-                                                            $sql1 = "SELECT full_name from song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                            $sql1 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
                                                             $name_singer = $sql1;
                                                             $result1 = mysqli_query($conn,$sql1);
                                                             if(mysqli_num_rows($result1) > 0){
@@ -369,7 +369,7 @@
                                     <?php
                                         
                                         include("config.php");
-                                        $sql2 = "SELECT * FROM song WHERE id_category like 1 EXCEPT (SELECT * FROM song ORDER BY id DESC LIMIT 5) ORDER BY id DESC LIMIT 5";
+                                        $sql2 = "SELECT * FROM song WHERE id_category LIKE 1 EXCEPT (SELECT * FROM song WHERE id_category like 1 ORDER BY id DESC LIMIT 5) ORDER BY id DESC LIMIT 5";
                                         $result2 = mysqli_query($conn,$sql2);
                                         if(mysqli_num_rows($result2) > 0){
                                             while($row = mysqli_fetch_assoc($result2)){
@@ -392,7 +392,7 @@
                                                             mysqli_close($conn);
                                                             include("config.php");
                                                             $id_singer = $row['id_singer'];
-                                                            $sql1 = "SELECT full_name from song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
+                                                            $sql1 = "SELECT DISTINCT full_name FROM song,singer WHERE singer.id = $id_singer AND song.id_singer = singer.id";
                                                             $name_singer = $sql1;
                                                             $result1 = mysqli_query($conn,$sql1);
                                                             if(mysqli_num_rows($result1) > 0){
