@@ -816,8 +816,45 @@
                             mysqli_close($conn);
                         ?>
                         </div>
+                   <!-- End Album -->
+                    <!-- Begin Video Moi Nhat -->
+                    <div class="row mt-5 mb-2">
+                        <div class="col-10">
+                            <h3 class="title">Video mới nhất</h3>
+                        </div>
+                        <div class="col-2">
+                            <a class="float-end my-sub-link" href="#">Xem tất cả</a>
+                        </div>
+                    </div>
 
-                    <!-- End Album -->
+                    <div class="row">
+                        <?php        
+                            include("config.php");
+                            $sqlx = "SELECT * FROM video ORDER BY id DESC LIMIT 8";
+                            $resultx = mysqli_query($conn,$sqlx);
+                            if(mysqli_num_rows($resultx) > 0){
+                                while($row = mysqli_fetch_assoc($resultx)){
+                        ?>
+                        <div class="col-3 new-video">
+                            <div class="box-video">
+                                <video controls src="<?php echo $row['link']; ?>" type="video/mp4"></video>
+                            </div>
+                            <div class="box-content">
+                                <a class="txt-bold my-link" href="#">
+                                    <?php echo $row['name']; ?>
+                                </a>
+                                <a class="sub-txt my-link" href="#">
+                                    <?php echo $row['author']; ?>
+                                </a>
+                            </div>
+                        </div>
+                        <?php
+                                }
+                            }
+                            mysqli_close($conn);
+                        ?>
+                    </div>
+                    <!-- End Video Moi Nhat -->
                     <!-- End -->
                 </div>
 
@@ -1689,6 +1726,82 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- End BXH -->
+                        
+                        <!-- Begin BXH Upload Trong Tuan -->
+                        <div class="row py-4">
+                            <div class="col-12">
+                                <h3 class="title">BXH Upload trong tuần</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
+                            <?php
+                                $i = 1;
+                                include("config.php");
+                                $sql43 = "SELECT * FROM uploader ORDER BY download DESC LIMIT 10";
+                                $result43 = mysqli_query($conn,$sql43);
+                                if(mysqli_num_rows($result43) > 0){
+                                    while($row = mysqli_fetch_assoc($result43)){
+                            ?>
+                            <div class="row bd-bottom">
+                                <div class="col-12 py-3">
+                                    <div class="row my-sing-rank">
+                                        <div class="col-1">
+                                            <p class="rank-th"><?php echo $i; $i++ ?></p>
+                                        </div>
+                                        <div class="col-3">
+                                            <a href="#"><img class="img-round" src="<?php echo $row['image']; ?>" alt=""></a>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="name-sing">
+                                                <p class="txt-bold dp-block"><a class="my-link" href="#"><?php echo $row['name']; ?></a></p>
+                                                <p class="sub-txt dp-block"><a class="sub-txt my-link" href="#"><?php echo $row['quantity']; ?> Upload (<?php echo $row['data']; ?> GB)</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <p class="txt-bold"><?php echo $row['download']; ?></p>
+                                            <p class="sub-txt txt-italic">download</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                    }
+                                }
+                                mysqli_close($conn);
+                            ?>
+                            </div>
+                        </div>
+                        <!-- End BXH Upload Trong Tuan -->
+
+                        <!-- Begin Ca Si Yeu Thich -->
+                        <div class="row py-4">
+                            <div class="col-12">
+                                <h3 class="title">Ca sĩ yêu thích</h3>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <?php
+                                include("config.php");
+                                $sql44 = "SELECT * FROM singer ORDER BY ID DESC LIMIT 18";
+                                $result44 = mysqli_query($conn,$sql44);
+                                if(mysqli_num_rows($result44) > 0){
+                                    while($row = mysqli_fetch_assoc($result44)){
+                            ?>
+                            <div class="col-4 favorite-singer px-1 py-1">
+                                <img src="<?php echo $row['image']; ?>" alt="Ca Sĩ">
+                                <p class="text-center"><?php echo $row['full_name']; ?></p>
+                            </div>
+                            <?php
+                                    }
+                                }
+                                mysqli_close($conn);
+                            ?>
+                        </div>
+                        <!-- End Ca Si Yeu Thich -->
                     </div>
                     <!-- End -->
                 </div>

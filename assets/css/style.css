@@ -71,6 +71,9 @@ a{
     display: flex;
     align-items: flex-end;
 }
+.img-round{
+    border-radius: 50% !important;
+}
 html{
     font-family: Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
@@ -258,6 +261,12 @@ html{
     font-size: 1.2rem;
     font-weight: bold;
 }
+.box-video{
+    height: 7rem;
+}
+.new-video video{
+    width: 100%;
+}
 
 /* Css for slidebar */
 .my-nav{
@@ -320,4 +329,13 @@ html{
 .my-sing-rank-1 .col-2{
     display: flex;
     align-items: center;
+}
+/* Css for favorite singer */
+.favorite-singer img{
+    width: 100%;
+    border: 1px solid #ccc;
+    
+}
+.favorite-singer img:hover{
+    opacity: 0.6;
 }
