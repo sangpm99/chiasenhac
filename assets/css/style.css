@@ -339,3 +339,36 @@ html{
 .favorite-singer img:hover{
     opacity: 0.6;
 }
+
+/* Css for footer */
+.footer{
+    background-color: var(--header);
+}
+.footer-top .col-12{
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #fff;
+}
+.footer-top ul{
+    list-style-type: none;
+}
+.footer-top h4{
+    font-size: 100%;
+}
+.footer-top ul li a{
+    color: #fff;
+    font-size: 80%;
+}
+.footer-top ul li:hover{
+    text-decoration: underline;
+}
+.footer-bottom li{
+    color: #fff;
+}
+.footer-bottom .col-12 ul{
+    display: flex;
+    justify-content: center;
+}
+.footer-bottom li{
+    margin: 1rem;
+}
