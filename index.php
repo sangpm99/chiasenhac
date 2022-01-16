@@ -30,7 +30,7 @@
                     </div>
 
                     <div class="col-3 my-login">
-                        <p class="text-white login"><a class="text-white" href="#">Đăng nhập</a> / <a class="text-white" href="#">Đăng Ký</a></p>
+                        <p class="text-white login"><a class="text-white" href="./assets/php/login.php">Đăng nhập</a></p>
                     </div>
                 </div>
             </div>
