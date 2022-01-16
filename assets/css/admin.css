@@ -1,5 +1,5 @@
 :root{
-    --red: #ff2d55;
+    --red: #ef4444;
     --yellow: #f9ca24;
     --green: #6ab04c;
     --header: #2c2c2c;
@@ -8,6 +8,11 @@
     --subtext: #8c8b8b;
     --bg: #f2f2f2;
     --btn: #fb655f;
+    --taskbar: #0f172a;
+    --blue: #4d8df7;
+    --txt-menu: #818ce5;
+    --orange: #f59e0b;
+    --turf: #f1f5f9;
 }
 .my-count{
     counter-reset: tableCount;     
@@ -74,7 +79,7 @@ a{
     border-radius: 50% !important;
 }
 html{
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
 }
 .title{
@@ -106,7 +111,97 @@ html{
 }
 .divider{
     height: 1px;
-    margin-left: 0.7rem;
-    width: 90%;
+    width: 100%;
     background-color: var(--subtext);
+}
+.text-gray{
+    color: #94a3b8 !important;
+}
+.image-round img{
+    border-radius: 50% !important;
+}
+.txt-menu{
+    color: var(--txt-menu);
+}
+.txt-blue{
+    color: var(--blue);
+}
+.txt-red{
+    color: var(--red);
+}
+.txt-orange{
+    color: var(--orange);
+}
+.txt-green{
+    color: var(--green);
+}
+.txt-yellow{
+    color: var(--yellow);
+}
+/* CSS */
+body{
+    margin: 0;
+}
+.my-menu{
+    background-color: var(--taskbar);
+    padding: 20px;
+    min-height: 97vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.my-menu .mini-logo img{
+    width: 100%;
+}
+.my-profile img{
+
+}
+.menu-bar{
+    list-style-type: none;
+}
+.menu-bar li{
+    border-radius: 5px;
+    padding: 5px;
+}
+.menu-bar li:hover{
+    background-color: #2c3344;
+}
+.my-menu{
+    width: 25%;
+}
+.main{
+    width: 73%;
+    margin-left: 26%;
+}
+
+.overview{
+    background-color: var(--turf);
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+}
+.box{
+    width: 20%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+}
+.btn{
+    padding: 5px;
+}
+
+/* CSS for add_account.php */
+.bg{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("../images/account.jpg");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    width: 50%;
+    background-color: rgba(255,255,255,0.7);
+    min-height: 50%;
+    padding: 20px;
 }

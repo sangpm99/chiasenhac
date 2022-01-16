@@ -7,13 +7,12 @@
     <title>Chia sẻ nhạc</title>
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" sizes="16x16"/>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS Bootstrap Offline -->
     <link rel="stylesheet" href="./assets/bootstrapcss/bootstrap.min.css">
     <!-- CSS Custom -->
     <link rel="stylesheet" href="./assets/css/style.css">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
