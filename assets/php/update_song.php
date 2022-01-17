@@ -7,55 +7,67 @@
         <div class="card shadow">
             <div class="row">
                 <div class="col-12">
-                    <h3 class="text-center mt-2 text-danger">THÊM BÀI HÁT</h3>
+                    <h3 class="text-center mt-2 text-danger">SỬA BÀI HÁT</h3>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
                     <form method="POST" action="">
+                        <?php
+                            $id_need = $_GET['id'];
+                            $sql = "SELECT * FROM song WHERE id=$id_need";
+                            $result = mysqli_query($conn,$sql);
+                            if(mysqli_num_rows($result) > 0){
+                                while($row = mysqli_fetch_assoc($result)){
+                        ?>
                         <div class="mb-3">
                             <label class="form-label">Tên bài hát</label>
-                            <input type="text" name="txt-name" class="form-control" required>
+                            <input type="text" name="txt-name" class="form-control" required value="<?php echo $row['song_name']; ?>">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">ID ca sĩ</label>
-                            <input type="number" name="txt-singer" class="form-control" required>
+                            <input type="number" name="txt-singer" class="form-control" required value="<?php echo $row['id_singer']; ?>">
                         </div>
                         
 
                         <div class="mb-3">
                             <label class="form-label">Ngày phát hành</label>
-                            <input class="form-control" name="txt-date" type="date" required>
+                            <input class="form-control" name="txt-date" type="date" required value="<?php echo $row['song_date']; ?>">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Lượt Xem</label>
-                            <input class="form-control" name="txt-view" type="number" required>
+                            <input class="form-control" name="txt-view" type="number" required value="<?php echo $row['song_view']; ?>">
                         </div>
                         
                         <div class="mb-3">
                             <label class="form-label">Ảnh</label>
-                            <input class="form-control" name="txt-image" type="file" required>
+                            <input class="form-control" name="txt-image" type="file" required value="<?php echo $row['song_image']; ?>">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">File</label>
-                            <input class="form-control" name="txt-music" type="file" required>
+                            <input class="form-control" name="txt-music" type="file" required value="<?php echo $row['music']; ?>">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">ID chuyên Mục</label>
-                            <input type="number" name="txt-category" class="form-control" required>
+                            <input type="number" name="txt-category" class="form-control" required value="<?php echo $row['id_category']; ?>">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Chất lượng</label>
-                            <input type="text" name="txt-quality" class="form-control" required>
+                            <input type="text" name="txt-quality" class="form-control" required value="<?php echo $row['quality']; ?>">
                         </div>
 
-                        <button type="submit" name="btn-submit" class="btn btn-success">Thêm</button>
+                        <button type="submit" name="btn-submit" class="btn btn-primary">Cập Nhật</button>
+                        <a href="./delete_song.php?id=<?php echo $row['id']; ?>" class="btn shadow bg-danger text-white">Xóa Bài Hát</a>
+                        <?php
+                                }
+                            }
+                        ?>
                     </form>
 
                     <?php
@@ -79,7 +91,7 @@
                             $quality = $_POST['txt-quality'];
 
 
-                            $sql = "INSERT INTO `song` (`id`, `song_name`, `id_singer`, `song_date`, `song_view`, `song_image`, `music`, `id_category`, `quality`) VALUES (NULL, '$name', $id_singer, '$date', '$view', '$image', '$music', $id_category, '$quality');";
+                            $sql = "UPDATE `song` SET `song_name` = '$name', `id_singer` = '$id_singer', `song_date` = '$date', `song_view` = '$view', `song_image` = '$image', `music` = '$music', `id_category` = '$id_category', `quality` = '$quality' WHERE `song`.`id` = $id_need;";
                             $result = mysqli_query($conn,$sql);
                             
                             if($result == true){

@@ -377,14 +377,14 @@ html{
 }
 
 
-
-
-
-
-
-
-
-
-
-
-/* CSS for login.php */
+/* CSS for play music */
+.box-music{
+    display: flex;
+    justify-content: center;
+}
+.box-img2{
+    width: 200px;
+}
+.box-img2 img{
+    width: 100%;
+}

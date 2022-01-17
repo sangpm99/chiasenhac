@@ -257,7 +257,7 @@
                                             <a href="./update_account.php?id=<?php echo $row['id']; ?>"><i class="far fa-edit text-warning"></i></a>
                                         </td>
                                         <td>
-                                            <i class="far fa-trash-alt text-danger"></i>
+                                            <a href="./delete_account.php?id=<?php echo $row['id']; ?>"><i class="far fa-trash-alt text-danger"></i></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -270,6 +270,66 @@
                         </table>
                     </div>
                 </div>
+                <!-- End Account -->
+
+                <!-- Singer -->
+                <div id="singer"></div>
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Quản lý ca sĩ</h3>
+                        <a href="./singer.php" class="btn shadow bg-info text-white">Xem tất cả</a>
+                        <a href="./add_singer.php" class="btn shadow bg-success text-white">Thêm ca sĩ</a>
+                        <br>
+                        <div class="row py-4">
+                            <?php
+                                include("config.php");
+                                $sql = "SELECT * FROM singer ORDER BY id DESC LIMIT 8";
+                                $result = mysqli_query($conn,$sql);
+                                
+                                if(mysqli_num_rows($result) > 0){
+                                    while($row = mysqli_fetch_assoc($result)){
+                            ?>
+                                <div class="col-3 singer">
+                                    <?php
+                                        $img = $row['image'];
+                                        $image = substr("$img",16);
+                                    ?>
+                                    <img class="shadow" src="../images/<?php echo $image; ?>" alt="Ảnh ca sĩ">
+                                    <p class="text-center"><?php echo $row['full_name']; ?></p>
+                                </div>
+                            <?php
+                                    }
+                                }
+                                mysqli_close($conn);
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Singer -->
+
+                <!-- Song -->
+                <div id="account"></div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <h3>Quản Lý Bài Hát</h3>
+                        <a href="./song.php" class="btn shadow bg-info text-white">Xem tất cả</a>
+                        <a href="./add_song.php" class="btn shadow bg-success text-white">Thêm bài hát</a>
+                    </div>
+                </div>
+                <!-- End Song -->
+
+                <!-- Video -->
+                <div id="account"></div>
+                <div class="row py-2">
+                    <div class="col-12">
+                        <h3>Quản Lý Video</h3>
+                        <a href="./video.php" class="btn shadow bg-info text-white">Xem tất cả</a>
+                        <a href="./add_video.php" class="btn shadow bg-success text-white">Thêm Video</a>
+                    </div>
+                </div>
+                <!-- End Video -->
+
+
             </div>
             <!-- End Main -->
         </div>

@@ -16,10 +16,10 @@
                     <div class="col-6">
                         <div class="row">
                             <div class="col-10">
-                                <form action="#">
+                                <form action="./search.php" method="POST">
                                     <div class="input-group">
                                         <span class="input-group-text" id="search"><i class="fas fa-search my-search"></i></span>
-                                        <input type="search" class="form-control" placeholder="Nhập bài hát, video, tên nghệ sĩ bạn cần tìm" aria-label="Search" aria-describedby="search">
+                                        <input name="search" type="search" class="form-control" placeholder="Nhập bài hát, video, tên nghệ sĩ bạn cần tìm" aria-label="Search" aria-describedby="search">
                                     </div>
                                 </form>
                             </div>
@@ -326,7 +326,7 @@
                                         
                                             <div class="box">
                                                 <div class="box-img">
-                                                    <a href="#">
+                                                    <a href="./play.php?id=<?php echo $row['id']; ?>">
                                                         <img src="<?php echo $row['song_image']; ?>">
                                                     </a>
                                                 </div>
@@ -378,7 +378,7 @@
                                         
                                             <div class="box">
                                                 <div class="box-img">
-                                                    <a href="#">
+                                                    <a href="./play.php?id=<?php echo $row['id']; ?>">
                                                         <img src="<?php echo $row['song_image']; ?>">
                                                     </a>
                                                 </div>
@@ -454,7 +454,9 @@
                         <div class="col-2 col-20">
                             <div class="box pb-5">
                                 <div class="box-img">
-                                    <img src="<?php echo $row['song_image']; ?>" alt="">
+                                    <a href="./play.php?id=<?php echo $row['id']; ?>">
+                                        <img src="<?php echo $row['song_image']; ?>" alt="">
+                                    </a>
                                 </div>
                                 <div class="box-content">
                                     <a class="txt txt-bold my-link" href="#"><?php echo $row['song_name']; ?></a>
@@ -581,7 +583,7 @@
                                             <div class="col-12 py-3">
                                                 <div class="row my-sing">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="name-sing">
@@ -651,7 +653,7 @@
                                             <div class="col-12 py-3">
                                                 <div class="row my-sing">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-4">
                                                         <div class="name-sing">
@@ -786,7 +788,9 @@
                         <div class="col-2 col-20">
                             <div class="box pb-5">
                                 <div class="box-img">
-                                    <img src="<?php echo $row['song_image']; ?>" alt="">
+                                    <a href="./play.php?id=<?php echo $row['id']; ?>">
+                                        <img src="<?php echo $row['song_image']; ?>" alt="">
+                                    </a>
                                 </div>
                                 <div class="box-content">
                                     <a class="txt txt-bold my-link" href="#"><?php echo $row['song_name']; ?></a>
@@ -902,7 +906,7 @@
                                             ?>
                                                 <div class="row my-sing-rank-1">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                         <p class="rank-first">1</p>
                                                     </div>
                                                     <div class="col-6">
@@ -955,7 +959,7 @@
                                                         <p class="rank-second">2</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1006,7 +1010,7 @@
                                                         <p class="rank-third">3</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1059,7 +1063,7 @@
                                                         <p class="rank-th"><?php echo $i; $i++ ?></p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1112,7 +1116,7 @@
                                             ?>
                                                 <div class="row my-sing-rank-1">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                         <p class="rank-first">1</p>
                                                     </div>
                                                     <div class="col-6">
@@ -1165,7 +1169,7 @@
                                                         <p class="rank-second">2</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1216,7 +1220,7 @@
                                                         <p class="rank-third">3</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1269,7 +1273,7 @@
                                                         <p class="rank-th"><?php echo $i; $i++ ?></p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1320,7 +1324,7 @@
                                             ?>
                                                 <div class="row my-sing-rank-1">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                         <p class="rank-first">1</p>
                                                     </div>
                                                     <div class="col-6">
@@ -1373,7 +1377,7 @@
                                                         <p class="rank-second">2</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1424,7 +1428,7 @@
                                                         <p class="rank-third">3</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1477,7 +1481,7 @@
                                                         <p class="rank-th"><?php echo $i; $i++ ?></p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1529,7 +1533,7 @@
                                             ?>
                                                 <div class="row my-sing-rank-1">
                                                     <div class="col-4">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                         <p class="rank-first">1</p>
                                                     </div>
                                                     <div class="col-6">
@@ -1582,7 +1586,7 @@
                                                         <p class="rank-second">2</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1633,7 +1637,7 @@
                                                         <p class="rank-third">3</p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1686,7 +1690,7 @@
                                                         <p class="rank-th"><?php echo $i; $i++ ?></p>
                                                     </div>
                                                     <div class="col-3">
-                                                        <a href="#"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
+                                                        <a href="./play.php?id=<?php echo $row['id']; ?>"><img src="<?php echo $row['song_image']; ?>" alt=""></a>
                                                     </div>
                                                     <div class="col-6">
                                                         <div class="name-sing">
@@ -1752,7 +1756,7 @@
                                             <p class="rank-th"><?php echo $i; $i++ ?></p>
                                         </div>
                                         <div class="col-3">
-                                            <a href="#"><img class="img-round" src="<?php echo $row['image']; ?>" alt=""></a>
+                                            <a href="./play.php?id=<?php echo $row['id']; ?>"><img class="img-round" src="<?php echo $row['image']; ?>" alt=""></a>
                                         </div>
                                         <div class="col-6">
                                             <div class="name-sing">
