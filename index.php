@@ -1,5 +1,5 @@
 <?php
-    include_once("header.php");
+    include("header.php");
 ?>
     <!-- Begin Header -->
     <header>
